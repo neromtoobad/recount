@@ -3,6 +3,8 @@
 Meta Global AI Developer Hackathon · Indie track · Theme: Build for Your World
 
 Live: https://recount.nerom.site (also https://recount-production-bcaf.up.railway.app)
+Demo video: https://youtu.be/owkRYab_Bqc
+Code: https://github.com/neromtoobad/recount
 API docs: /data · OpenAPI: /api/openapi.json
 
 ---
@@ -194,6 +196,8 @@ Recount's sum of the sheets compared with INEC's declaration:
 - VOA on the 2023 declaration and the opposition's court challenge — https://www.voanews.com/a/nigeria-s-labour-party-to-challenge-presidential-election-result-in-court-/6985500.html
 
 ### Demo video credits
+
+Video: https://youtu.be/owkRYab_Bqc
 
 - Archive footage: Voice of America (Timothy Obiezu, Abuja, March 2023). It's a US government work, so it's in the public domain. Only VOA's own shots are used; the clips carrying Reuters, AP or AFP material were left out.
 - Photos from Wikimedia Commons, all CC BY-SA 4.0: "NYSC member counting votes during 2023 presidential election in Gombe" by Iyusuf615; "2023 Elections in Nigeria 20" by Yemi Festus; "OchejaCollationCenter" by Harryman4ever.

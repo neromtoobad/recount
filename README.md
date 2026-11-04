@@ -2,7 +2,7 @@
 
 Every Nigerian result sheet, read and checked by Muse Spark.
 
-**Live:** https://recount.nerom.site · **Write-up:** [submission/WRITEUP.md](submission/WRITEUP.md) · Meta Global AI Developer Hackathon, Indie track
+**Live:** https://recount.nerom.site · **Demo video:** https://youtu.be/owkRYab_Bqc · **Write-up:** [submission/WRITEUP.md](submission/WRITEUP.md) · Meta Global AI Developer Hackathon, Indie track
 
 Nigeria posts a photo of every polling-unit result sheet (Form EC8A) to INEC's Result Viewing portal (IReV), but nothing there is machine-readable and nobody reads all 176,846 of them. Recount does:
 
