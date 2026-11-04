@@ -11,6 +11,7 @@
 ![Hono](https://img.shields.io/badge/Hono-API-E36002?logo=hono&logoColor=white)
 ![Muse Spark 1.3](https://img.shields.io/badge/Meta-Muse%20Spark%201.3-0866FF?logo=meta&logoColor=white)
 ![SAM 3.1](https://img.shields.io/badge/Meta-SAM%203.1-0866FF?logo=meta&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
 *Meta Global AI Developer Hackathon · Indie track*
 
@@ -32,6 +33,7 @@
 - [Deployment](#deployment)
 - [Responsible use](#responsible-use)
 - [Data and credits](#data-and-credits)
+- [License](#license)
 
 ## Why
 
@@ -199,3 +201,7 @@ Recount is independent and non-partisan, and it is not INEC. It doesn't declare 
 - Result sheets are public records published by INEC on IReV.
 - The demo video uses Voice of America footage (public domain) and Wikimedia Commons photos by Iyusuf615, Yemi Festus and Harryman4ever (CC BY-SA 4.0). Full credits are in the [write-up](submission/WRITEUP.md#demo-video-credits).
 - Built with Muse Spark 1.3 and SAM 3.1 on the Meta Model API.
+
+## License
+
+The code is released under the [MIT License](LICENSE). The IReV sheet images, the VOA footage and the Commons photos keep their own terms, listed above.
