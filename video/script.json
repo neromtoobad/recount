@@ -1,0 +1,93 @@
+[
+ {
+  "id": "n1",
+  "act": "problem",
+  "text": "In Nigeria, every vote is counted by hand. At each of a hundred and seventy-six thousand polling units, one officer writes the result on one sheet of paper.",
+  "say": "In Nigeria, every vote is counted by hand. At each of a hundred and seventy six thousand polling units, one officer writes the result, on one sheet of paper.",
+  "cap": "176,846 polling units. One sheet of paper each."
+ },
+ {
+  "id": "n2",
+  "act": "problem",
+  "text": "Since 2020, a photo of that sheet goes online, on the election commission's result viewing portal. In principle, anyone can check the count.",
+  "say": "Since twenty twenty, a photo of that sheet goes online, on the election commission's result viewing portal. In principle, anyone can check the count.",
+  "cap": "Every sheet is photographed and posted online"
+ },
+ {
+  "id": "n3",
+  "act": "problem",
+  "text": "In practice, almost nobody does. In 2023, sheets were still being uploaded eighty-seven days after the presidential election.",
+  "say": "In practice, almost nobody does. In twenty twenty three, sheets were still being uploaded, eighty seven days after the presidential election.",
+  "cap": "Still uploading, 87 days later"
+ },
+ {
+  "id": "n4",
+  "act": "problem",
+  "text": "And a result doesn't go straight to the top. It's added up again, and again, on its way to the state. Every step is a chance for a number to change.",
+  "say": "And a result doesn't go straight to the top. It's added up again, at ward level... then the local government... then the state. Every step is a chance for a number to change.",
+  "cap": "Polling unit → ward → LGA → state"
+ },
+ {
+  "id": "n5",
+  "act": "problem",
+  "text": "On election night, edited photos of result sheets spread faster than anyone can check them. The fights end up in tribunals, sheet by sheet, months later.",
+  "say": "On election night, edited photos of result sheets spread faster than anyone can check them. The fights end up in tribunals... sheet by sheet... months later.",
+  "cap": "Fakes spread faster than corrections"
+ },
+ {
+  "id": "n6",
+  "act": "why",
+  "text": "I'm Nigerian. Our next general election is on the sixteenth of January, 2027. I didn't want another report, weeks after the fact. I wanted something anyone could use on the night. So I built Recount.",
+  "say": "I'm Nigerian. Our next general election is on the sixteenth of January, twenty twenty seven. I didn't want another report, weeks after the fact. I wanted something anyone could use, on the night. So I built Recount.",
+  "cap": "So I built Recount"
+ },
+ {
+  "id": "n7",
+  "act": "how",
+  "text": "Recount reads every result sheet the commission publishes. Meta's model, Muse Spark, copies each figure, in numbers and in words. Then SAM 3.1 finds the stamp, and any correction fluid.",
+  "say": "Recount reads every result sheet the commission publishes. Meta's model, Muse Spark, copies each figure, in numbers, and in words. Then Sam three point one finds the stamp, and any correction fluid.",
+  "cap": "Muse Spark reads it. SAM 3.1 finds the stamp."
+ },
+ {
+  "id": "n8",
+  "act": "how",
+  "text": "Then plain code checks the sheet against itself. Do the votes add up? Are there more votes than voters? Was it signed?",
+  "say": "Then plain code checks the sheet against itself. Do the votes add up? Are there more votes than voters? Was it signed?",
+  "cap": "Code checks the sheet against itself"
+ },
+ {
+  "id": "n9",
+  "act": "how",
+  "text": "For Osun's governorship election, Recount read all 3,752 sheets. Its total lands within about a tenth of a percent of what was declared, and it flagged 354 sheets that need a second look.",
+  "say": "For Oshun's governorship election, Recount read all three thousand, seven hundred and fifty two sheets. Its total lands within about a tenth of a percent of what was declared. And it flagged three hundred and fifty four sheets that need a second look.",
+  "cap": "3,752 sheets read · within 0.1% of the declared total"
+ },
+ {
+  "id": "n10",
+  "act": "how",
+  "text": "Got a result sheet forwarded to you? Drop it in. Recount finds the polling unit, pulls the original, and circles anything that changed.",
+  "say": "Got a result sheet forwarded to you? Drop it in. Recount finds the polling unit, pulls the original, and circles anything that changed.",
+  "cap": "Fact-check any sheet you're sent"
+ },
+ {
+  "id": "n11",
+  "act": "how",
+  "text": "At the collation centre, photograph the collation sheet. Recount checks every row against the polling units, and adds the totals up again.",
+  "say": "At the collation centre, photograph the collation sheet. Recount checks every row against the polling units, and adds the totals up again.",
+  "cap": "Check the collation sheet, row by row"
+ },
+ {
+  "id": "n12",
+  "act": "how",
+  "text": "On the day, report what you see at your unit, from late officials to people buying votes. And for the tribunals, every sheet is fingerprinted, so what was posted on the night can be proven later.",
+  "say": "On the day, report what you see at your unit, from late officials, to people buying votes. And for the tribunals, every sheet is fingerprinted, so what was posted on the night can be proven later.",
+  "cap": "Report your unit · Fingerprint every sheet"
+ },
+ {
+  "id": "n13",
+  "act": "end",
+  "text": "Recount doesn't declare winners. Only the commission does that. It just makes sure every sheet gets read.",
+  "say": "Recount doesn't declare winners. Only the commission does that. It just makes sure... every sheet gets read.",
+  "cap": "Every polling unit. Every sheet. Read."
+ }
+]

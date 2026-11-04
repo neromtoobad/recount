@@ -1,0 +1,367 @@
+{
+ "total": 178.04,
+ "cold": 8.4,
+ "title": 84.66,
+ "music": {
+  "start543": 60.04,
+  "hit": 84.66,
+  "jump": 129.66,
+  "HIT": 24.62,
+  "JUMP_AT": 69.62,
+  "JUMP_TO": 39.62,
+  "MUSIC_END": 88
+ },
+ "vo": [
+  {
+   "id": "n1",
+   "act": "problem",
+   "t": 8.4,
+   "dur": 11.09,
+   "text": "In Nigeria, every vote is counted by hand. At each of a hundred and seventy-six thousand polling units, one officer writes the result on one sheet of paper.",
+   "cap": "176,846 polling units. One sheet of paper each."
+  },
+  {
+   "id": "n2",
+   "act": "problem",
+   "t": 20.04,
+   "dur": 11.76,
+   "text": "Since 2020, a photo of that sheet goes online, on the election commission's result viewing portal. In principle, anyone can check the count.",
+   "cap": "Every sheet is photographed and posted online"
+  },
+  {
+   "id": "n3",
+   "act": "problem",
+   "t": 32.35,
+   "dur": 9.01,
+   "text": "In practice, almost nobody does. In 2023, sheets were still being uploaded eighty-seven days after the presidential election.",
+   "cap": "Still uploading, 87 days later"
+  },
+  {
+   "id": "n4",
+   "act": "problem",
+   "t": 43.11,
+   "dur": 10.94,
+   "text": "And a result doesn't go straight to the top. It's added up again, and again, on its way to the state. Every step is a chance for a number to change.",
+   "cap": "Polling unit → ward → LGA → state"
+  },
+  {
+   "id": "n5",
+   "act": "problem",
+   "t": 54.6,
+   "dur": 12.14,
+   "text": "On election night, edited photos of result sheets spread faster than anyone can check them. The fights end up in tribunals, sheet by sheet, months later.",
+   "cap": "Fakes spread faster than corrections"
+  },
+  {
+   "id": "n6",
+   "act": "why",
+   "t": 68.29,
+   "dur": 15.67,
+   "text": "I'm Nigerian. Our next general election is on the sixteenth of January, 2027. I didn't want another report, weeks after the fact. I wanted something anyone could use on the night. So I built Recount.",
+   "cap": "So I built Recount"
+  },
+  {
+   "id": "n7",
+   "act": "how",
+   "t": 88.16,
+   "dur": 13.95,
+   "text": "Recount reads every result sheet the commission publishes. Meta's model, Muse Spark, copies each figure, in numbers and in words. Then SAM 3.1 finds the stamp, and any correction fluid.",
+   "cap": "Muse Spark reads it. SAM 3.1 finds the stamp."
+  },
+  {
+   "id": "n8",
+   "act": "how",
+   "t": 102.66,
+   "dur": 10.03,
+   "text": "Then plain code checks the sheet against itself. Do the votes add up? Are there more votes than voters? Was it signed?",
+   "cap": "Code checks the sheet against itself"
+  },
+  {
+   "id": "n9",
+   "act": "how",
+   "t": 113.24,
+   "dur": 16.75,
+   "text": "For Osun's governorship election, Recount read all 3,752 sheets. Its total lands within about a tenth of a percent of what was declared, and it flagged 354 sheets that need a second look.",
+   "cap": "3,752 sheets read · within 0.1% of the declared total"
+  },
+  {
+   "id": "n10",
+   "act": "how",
+   "t": 130.54,
+   "dur": 9.89,
+   "text": "Got a result sheet forwarded to you? Drop it in. Recount finds the polling unit, pulls the original, and circles anything that changed.",
+   "cap": "Fact-check any sheet you're sent"
+  },
+  {
+   "id": "n11",
+   "act": "how",
+   "t": 140.98,
+   "dur": 10.87,
+   "text": "At the collation centre, photograph the collation sheet. Recount checks every row against the polling units, and adds the totals up again.",
+   "cap": "Check the collation sheet, row by row"
+  },
+  {
+   "id": "n12",
+   "act": "how",
+   "t": 152.4,
+   "dur": 13.57,
+   "text": "On the day, report what you see at your unit, from late officials to people buying votes. And for the tribunals, every sheet is fingerprinted, so what was posted on the night can be proven later.",
+   "cap": "Report your unit · Fingerprint every sheet"
+  },
+  {
+   "id": "n13",
+   "act": "end",
+   "t": 166.52,
+   "dur": 6.58,
+   "text": "Recount doesn't declare winners. Only the commission does that. It just makes sure every sheet gets read.",
+   "cap": "Every polling unit. Every sheet. Read."
+  }
+ ],
+ "scenes": [
+  {
+   "name": "f-crowd",
+   "line": null,
+   "t": 0,
+   "dur": 4.2,
+   "foot": "crowd"
+  },
+  {
+   "name": "f-bvas",
+   "line": null,
+   "t": 4.2,
+   "dur": 4.2,
+   "foot": "bvas"
+  },
+  {
+   "name": "p-count",
+   "line": "n1",
+   "t": 8.3,
+   "dur": 5.82,
+   "photo": "count"
+  },
+  {
+   "name": "sheet1",
+   "line": "n1",
+   "t": 14.12,
+   "dur": 5.82
+  },
+  {
+   "name": "p-upload",
+   "line": "n2",
+   "t": 19.94,
+   "dur": 3.693,
+   "photo": "upload"
+  },
+  {
+   "name": "wall",
+   "line": "n2",
+   "t": 23.633,
+   "dur": 8.617
+  },
+  {
+   "name": "map",
+   "line": "n3",
+   "t": 32.25,
+   "dur": 6.671
+  },
+  {
+   "name": "clip87",
+   "line": "n3",
+   "t": 38.921,
+   "dur": 4.089
+  },
+  {
+   "name": "chain",
+   "line": "n4",
+   "t": 43.01,
+   "dur": 11.49
+  },
+  {
+   "name": "p-decl",
+   "line": "n5",
+   "t": 54.5,
+   "dur": 2.738,
+   "photo": "collation"
+  },
+  {
+   "name": "phone",
+   "line": "n5",
+   "t": 57.238,
+   "dur": 3.012
+  },
+  {
+   "name": "f-sitin",
+   "line": "n5",
+   "t": 60.25,
+   "dur": 2.464,
+   "foot": "sitin"
+  },
+  {
+   "name": "f-irev",
+   "line": "n5",
+   "t": 62.714,
+   "dur": 2.738,
+   "foot": "irev"
+  },
+  {
+   "name": "clips2",
+   "line": "n5",
+   "t": 65.452,
+   "dur": 2.738
+  },
+  {
+   "name": "why",
+   "line": "n6",
+   "t": 68.19,
+   "dur": 16.47
+  },
+  {
+   "name": "title",
+   "line": null,
+   "t": 84.66,
+   "dur": 3.4
+  },
+  {
+   "name": "sheet",
+   "line": "n7",
+   "t": 88.06,
+   "dur": 14.5,
+   "from": 0.3,
+   "to": 12.2,
+   "focus": [
+    0.3,
+    0.45
+   ],
+   "clip": "sheet"
+  },
+  {
+   "name": "sheet",
+   "line": "n8",
+   "t": 102.56,
+   "dur": 10.58,
+   "from": 12.2,
+   "to": 20.088,
+   "focus": [
+    0.62,
+    0.55
+   ],
+   "clip": "sheet"
+  },
+  {
+   "name": "osun",
+   "line": "n9",
+   "t": 113.14,
+   "dur": 17.3,
+   "from": 0.3,
+   "to": 14.878,
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "clip": "osun"
+  },
+  {
+   "name": "phone2",
+   "line": "n10",
+   "t": 130.44,
+   "dur": 1.67
+  },
+  {
+   "name": "check",
+   "line": "n10",
+   "t": 132.11,
+   "dur": 2.923,
+   "from": 0.6,
+   "to": 4.4,
+   "focus": [
+    0.3,
+    0.3
+   ],
+   "clip": "check"
+  },
+  {
+   "name": "check",
+   "line": "n10",
+   "t": 135.034,
+   "dur": 5.846,
+   "from": 12,
+   "to": 21.523,
+   "focus": [
+    0.4,
+    0.55
+   ],
+   "clip": "check"
+  },
+  {
+   "name": "collation",
+   "line": "n11",
+   "t": 140.88,
+   "dur": 4.796,
+   "from": 0.6,
+   "to": 6.6,
+   "focus": [
+    0.35,
+    0.4
+   ],
+   "clip": "collation"
+  },
+  {
+   "name": "collation",
+   "line": "n11",
+   "t": 145.676,
+   "dur": 6.624,
+   "from": 8.6,
+   "to": 18.105,
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "clip": "collation"
+  },
+  {
+   "name": "report",
+   "line": "n12",
+   "t": 152.3,
+   "dur": 5.93,
+   "from": 0.2,
+   "to": 7.854,
+   "focus": [
+    0.45,
+    0.5
+   ],
+   "clip": "report"
+  },
+  {
+   "name": "pack",
+   "line": "n12",
+   "t": 158.23,
+   "dur": 8.19,
+   "from": 0.2,
+   "to": 9.815,
+   "focus": [
+    0.4,
+    0.4
+   ],
+   "clip": "pack"
+  },
+  {
+   "name": "home",
+   "line": "n13",
+   "t": 166.42,
+   "dur": 3.565,
+   "from": 0.4,
+   "to": 5,
+   "focus": [
+    0.35,
+    0.45
+   ],
+   "clip": "home"
+  },
+  {
+   "name": "end",
+   "line": "n13",
+   "t": 169.985,
+   "dur": 8.055
+  }
+ ]
+}

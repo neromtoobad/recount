@@ -1,0 +1,39 @@
+{
+  "name": "recount",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "PORT=8791 tsx watch server/index.ts",
+    "dev:web": "vite --port 5181",
+    "build": "vite build",
+    "start": "tsx server/index.ts",
+    "index": "node scripts/index-irev.mjs",
+    "analyze": "tsx scripts/analyze.ts",
+    "copies": "tsx scripts/copies.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@meta-sam/parser": "^0.1.0",
+    "dotenv": "^18.0.9",
+    "hono": "^4.13.14",
+    "jsqr": "^1.4.0",
+    "openai": "^7.47.0",
+    "p-limit": "^7.3.3",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/qrcode": "^1.5.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}

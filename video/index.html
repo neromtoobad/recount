@@ -1,0 +1,509 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts2/fonts.css">
+<style>
+:root { --ink: #12100d; --paper: #efe6d2; --red: #c8322b; --green: #0e3d1e; --green2: #1f6b38; --light: #f4f2ec; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#frame { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--ink); font-family: Poppins, sans-serif; }
+.sc { position: absolute; inset: 0; overflow: hidden; display: none; }
+.dark { background: var(--ink); color: var(--paper); }
+.lightbg { background: var(--light); color: #17201a; }
+.kb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.type { font-family: 'Special Elite', monospace; color: var(--paper); }
+.grade { filter: saturate(.75) sepia(.18) contrast(1.06) brightness(.82); }
+
+/* cold open */
+/* archive: VOA footage and Commons photos */
+.arch .kb { filter: saturate(.8) sepia(.12) contrast(1.05) brightness(.86); }
+.arch .credit { position: absolute; right: 64px; top: 70px; font-family: 'Geist Mono'; font-size: 19px; color: rgba(246,239,221,.82); text-shadow: 0 1px 8px rgba(0,0,0,.9); letter-spacing: .5px; }
+.arch .place { position: absolute; left: 96px; bottom: 196px; max-width: 1100px; font-family: 'Special Elite'; font-size: 40px; color: #f6efdd; text-shadow: 0 2px 16px rgba(0,0,0,.9); white-space: pre; }
+.arch .place::before { content: ''; display: block; width: 64px; height: 4px; background: #d9a24f; margin-bottom: 16px; }
+.arch .stamp { position: absolute; left: 120px; top: 300px; padding: 26px 40px; border: 6px solid #c8322b; color: #e2463c; font-family: 'Special Elite'; text-transform: uppercase; background: rgba(18,16,13,.55); transform-origin: 30% 50%; }
+.arch .stamp b { display: block; font-weight: 400; font-size: 64px; letter-spacing: 2px; }
+.arch .stamp span { display: block; font-size: 34px; color: #f6efdd; margin-top: 8px; letter-spacing: 1px; text-transform: none; }
+#coldtype { position: absolute; left: 140px; bottom: 170px; z-index: 34; text-shadow: 0 2px 18px rgba(0,0,0,.85); display: none; }
+#coldtype div { font-size: 58px; line-height: 1.35; white-space: pre; }
+#coldtype .l2 { color: #f6efdd; }
+
+#s-cold .lines { position: absolute; left: 140px; bottom: 170px; text-shadow: 0 2px 18px rgba(0,0,0,.7); }
+#s-cold .lines div { font-size: 58px; line-height: 1.35; white-space: pre; }
+#s-cold .lines .l2 { color: #f6efdd; }
+
+/* one sheet */
+#s-sheet1 { background: radial-gradient(1200px 900px at 70% 40%, #2a2219, #120f0b 70%); }
+#s-sheet1 .paper { position: absolute; width: 760px; right: 170px; top: 60px; box-shadow: 0 40px 80px rgba(0,0,0,.6); }
+#s-sheet1 .count { position: absolute; left: 140px; top: 290px; }
+#s-sheet1 .count b { display: block; font-family: Fraunces; font-weight: 600; font-size: 190px; line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -2px; }
+#s-sheet1 .count .pu { position: relative; display: inline-block; font-family: Fraunces; font-size: 60px; margin-top: 16px; padding: 0 8px; }
+#s-sheet1 .count .pu i { position: absolute; left: 0; top: 18%; height: 70%; background: #d8b23a; opacity: .55; z-index: -1; transform-origin: left; }
+#s-sheet1 .count .each { font-family: 'Special Elite'; font-size: 42px; margin-top: 36px; color: #e6dcc6; }
+
+/* wall */
+#s-wall { background: #0d0b09; }
+#s-wall .grid { position: absolute; left: 0; top: 0; display: grid; grid-template-columns: repeat(8, 300px); gap: 24px; transform-origin: 0 0; }
+#s-wall .grid img { width: 300px; height: 400px; object-fit: cover; display: block; filter: sepia(.2) brightness(.92); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+.urlpill { position: absolute; left: 50%; top: 170px; transform: translateX(-50%); background: rgba(239,230,210,.96); color: #1d1a15; border-radius: 999px; padding: 16px 34px; font-family: 'Geist Mono'; font-size: 30px; display: flex; gap: 14px; align-items: center; box-shadow: 0 16px 40px rgba(0,0,0,.5); }
+.urlpill svg { width: 26px; height: 26px; }
+
+/* map */
+#s-map { background: radial-gradient(1300px 900px at 35% 50%, #1d1914, #0e0c09 75%); }
+#s-map svg { position: absolute; left: 110px; top: 80px; }
+#s-map .side { position: absolute; left: 1150px; top: 250px; width: 680px; }
+#s-map .clock { font-family: 'Geist Mono'; font-size: 34px; color: #d9cdb3; letter-spacing: 1px; }
+#s-map .n { font-family: Fraunces; font-weight: 600; font-size: 150px; line-height: 1.05; margin-top: 26px; font-variant-numeric: tabular-nums; }
+#s-map .of { font-size: 30px; color: #cbbf a6; color: #cdbfa4; }
+#s-map .bar { height: 10px; background: rgba(239,230,210,.14); border-radius: 6px; margin-top: 30px; overflow: hidden; }
+#s-map .bar i { display: block; height: 100%; background: var(--paper); width: 0; }
+#s-map .miss { font-family: 'Special Elite'; color: #ff6b5e; font-size: 40px; margin-top: 40px; opacity: 0; }
+#s-map .src { position: absolute; left: 1150px; bottom: 120px; font-family: 'Geist Mono'; font-size: 20px; color: #8a7f6c; }
+
+/* clippings */
+.desk { background: radial-gradient(1400px 1000px at 50% 45%, #2b231a, #110e0a 72%); }
+.clipping { position: absolute; background: #f1e9d6; color: #1b1812; padding: 54px 64px 60px; box-shadow: 0 50px 90px rgba(0,0,0,.6); clip-path: polygon(0 1%, 4% 0, 9% 1.2%, 15% .2%, 22% 1%, 30% 0, 38% 1.3%, 46% .3%, 55% 1.1%, 63% 0, 71% 1.2%, 80% .2%, 88% 1%, 95% 0, 100% 1.4%, 99.4% 50%, 100% 99%, 94% 100%, 86% 98.9%, 77% 100%, 69% 99%, 60% 100%, 51% 98.8%, 42% 100%, 33% 99%, 24% 100%, 15% 98.9%, 7% 100%, 0 99%, .6% 50%); }
+.clipping .mast { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 3px solid #1b1812; padding-bottom: 14px; font-family: Fraunces; font-weight: 700; font-size: 34px; }
+.clipping .mast small { font-family: 'Geist Mono'; font-weight: 400; font-size: 20px; color: #5d564a; }
+.clipping h2 { font-family: Fraunces; font-weight: 700; font-size: 74px; line-height: 1.06; margin-top: 30px; letter-spacing: -.5px; position: relative; }
+.clipping h2 .mark { position: relative; white-space: nowrap; }
+.clipping .txt { margin-top: 34px; display: grid; gap: 16px; }
+.clipping .txt i { display: block; height: 13px; background: #cfc5af; border-radius: 3px; }
+.pencil { position: absolute; overflow: visible; pointer-events: none; }
+.pencil path { fill: none; stroke: var(--red); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.card2 { position: absolute; background: #e9e2cf; color: #201c15; padding: 46px 56px; font-family: 'Special Elite'; box-shadow: 0 40px 80px rgba(0,0,0,.55); width: 760px; }
+.card2 h3 { font-size: 46px; font-weight: 400; border-bottom: 2px solid #b33; padding-bottom: 12px; }
+.card2 p { font-size: 36px; line-height: 1.4; margin-top: 22px; }
+
+/* chain */
+#s-chain { background: radial-gradient(1500px 900px at 50% 50%, #221c15, #0e0c09 75%); }
+#s-chain .rail { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.slip { position: absolute; width: 420px; height: 330px; background: #ece3cf; color: #1d1a14; padding: 30px 34px; box-shadow: 0 30px 60px rgba(0,0,0,.55); font-family: 'Special Elite'; }
+.slip .code { font-family: 'Geist Mono'; font-size: 22px; color: #6b6253; }
+.slip h4 { font-family: Fraunces; font-weight: 600; font-size: 40px; margin-top: 10px; line-height: 1.1; }
+.slip .row { display: flex; justify-content: space-between; font-size: 32px; margin-top: 26px; border-bottom: 1px dashed #9a8f7a; padding-bottom: 6px; position: relative; }
+.slip .row .v { position: relative; }
+.slip .strike { position: absolute; left: -8px; right: -8px; top: 52%; height: 5px; background: var(--red); transform-origin: left; transform: scaleX(0); }
+.slip .fix { position: absolute; right: calc(100% + 16px); top: -14px; font-family: Fraunces; font-style: italic; font-weight: 500; color: var(--red); font-size: 50px; opacity: 0; }
+#s-chain svg.string { position: absolute; left: 0; top: 0; overflow: visible; }
+#s-chain svg.string path { fill: none; stroke: #b8352c; stroke-width: 3.5; }
+
+/* why */
+#s-why .wrap { position: absolute; left: 0; right: 0; top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#s-why .lab { font-family: 'Special Elite'; font-size: 40px; color: #cfc3aa; white-space: pre; height: 56px; }
+#s-why .date { font-family: Fraunces; font-weight: 600; font-size: 170px; line-height: 1.1; margin-top: 14px; letter-spacing: -2px; }
+#s-why .date span { display: inline-block; }
+#s-why .pair { display: flex; gap: 90px; margin-top: 60px; font-family: Fraunces; font-size: 76px; }
+#s-why .pair > div { position: relative; padding: 0 10px; }
+#s-why .weeks { color: #8f8574; }
+#s-why .weeks i { position: absolute; left: -6px; right: -6px; top: 54%; height: 7px; background: var(--red); transform-origin: left; }
+#s-why .night i { position: absolute; left: 0; top: 20%; height: 68%; background: #d8b23a; opacity: .5; z-index: -1; transform-origin: left; }
+#s-why .night { position: relative; z-index: 0; }
+#wipe { position: absolute; left: 960px; top: 540px; width: 10px; height: 10px; margin: -5px; border-radius: 50%; background: var(--light); display: none; z-index: 40; }
+
+/* title + end */
+.brand { display: flex; align-items: center; gap: 44px; }
+.brand svg { width: 190px; height: 190px; }
+.brand .word { font-family: Fraunces; font-weight: 600; font-size: 190px; color: var(--green); letter-spacing: -3px; line-height: 1; }
+#s-title .wrap, #s-end .wrap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#s-title .tag { font-family: Poppins; font-size: 44px; color: #2b3a2f; margin-top: 46px; position: relative; }
+#s-title .tag .read { position: relative; }
+#s-title .tag svg { position: absolute; left: -10px; bottom: -22px; width: calc(100% + 20px); height: 30px; overflow: visible; }
+#s-title .tag svg path { fill: none; stroke: var(--red); stroke-width: 6; stroke-linecap: round; }
+#s-end .brand svg { width: 130px; height: 130px; }
+#s-end .brand .word { font-size: 130px; }
+#s-end .tag { font-family: Fraunces; font-size: 54px; color: #1b2a1f; margin-top: 40px; }
+#s-end .url { font-family: 'Geist Mono'; font-size: 32px; color: var(--green2); margin-top: 44px; background: #fff; border: 2px solid #d6dccf; border-radius: 999px; padding: 14px 34px; }
+#s-end .small { font-size: 26px; color: #5b6659; margin-top: 46px; text-align: center; line-height: 1.7; }
+
+/* product windows */
+.win { position: absolute; left: 272px; top: 64px; width: 1376px; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 30px 80px rgba(20,40,25,.18), 0 0 0 1px rgba(20,40,25,.08); }
+.win .bar { height: 46px; background: #e9ece6; display: flex; align-items: center; padding: 0 18px; gap: 9px; }
+.win .bar b { width: 13px; height: 13px; border-radius: 50%; background: #c9cfc5; }
+.win .bar span { margin-left: 20px; flex: 1; background: #fff; border-radius: 8px; height: 30px; display: flex; align-items: center; padding: 0 16px; font-family: 'Geist Mono'; font-size: 17px; color: #46524a; }
+.win .bar span em { font-style: normal; color: #9aa39b; }
+.win .view { width: 1376px; height: 774px; overflow: hidden; position: relative; }
+.win .view img { width: 1376px; height: 774px; display: block; transform-origin: 50% 50%; }
+.lightbg.paperish { background: radial-gradient(1600px 1000px at 50% 30%, #fbfaf6, #ecebe3 80%); }
+#s-phone2 .card { position: absolute; left: 260px; top: 70px; width: 1400px; height: 784px; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(20,40,25,.25); }
+#s-phone2 .card img { width: 100%; height: 100%; object-fit: cover; }
+
+/* overlays */
+#veil { position: absolute; inset: 0; background: #000; pointer-events: none; z-index: 30; opacity: 0; }
+#leak { position: absolute; inset: -200px; pointer-events: none; z-index: 31; mix-blend-mode: screen; opacity: 0; background: radial-gradient(700px 520px at 20% 30%, rgba(255,150,60,.75), rgba(255,90,30,.25) 45%, transparent 70%); }
+#vig { position: absolute; inset: 0; pointer-events: none; z-index: 32; background: radial-gradient(1250px 820px at 50% 48%, transparent 55%, rgba(0,0,0,.62)); }
+#grain { position: absolute; inset: -64px; pointer-events: none; z-index: 33; mix-blend-mode: overlay; opacity: .2; }
+#tag { position: absolute; left: 96px; top: 74px; z-index: 35; font-family: 'Special Elite'; color: var(--paper); text-shadow: 0 2px 14px rgba(0,0,0,.8); }
+#tag small { display: block; font-size: 22px; letter-spacing: 3px; color: #d9a24f; margin-bottom: 10px; }
+#tag div { font-size: 32px; white-space: pre; }
+#chyron { position: absolute; left: 248px; top: 838px; z-index: 35; display: flex; align-items: stretch; box-shadow: 0 16px 40px rgba(14,61,30,.25); border-radius: 10px; overflow: hidden; }
+#chyron .k { background: var(--green); color: #fff; font-family: 'Geist Mono'; font-size: 20px; padding: 0 18px; display: flex; align-items: center; letter-spacing: 1px; }
+#chyron .k i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #7fd37e; margin-right: 10px; }
+#chyron .c { background: #fff; color: #10251a; font-family: Fraunces; font-weight: 600; font-size: 34px; padding: 12px 26px; white-space: nowrap; }
+.call { position: absolute; z-index: 36; background: #fff; border-radius: 14px; box-shadow: 0 24px 60px rgba(14,40,24,.22), 0 0 0 1px rgba(14,40,24,.06); padding: 22px 28px; color: #13241a; opacity: 0; }
+.call .h { font-family: 'Geist Mono'; font-size: 19px; color: var(--green2); letter-spacing: 1px; }
+.call .b { font-family: Fraunces; font-weight: 600; font-size: 36px; margin-top: 6px; line-height: 1.15; }
+.call .s { font-size: 22px; color: #56625a; margin-top: 6px; }
+.call .row { display: flex; align-items: center; gap: 16px; font-size: 27px; margin-top: 14px; opacity: 0; }
+.call .row:first-of-type { margin-top: 4px; }
+.call .row .x { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: #fff; font-size: 20px; font-weight: 600; flex: none; }
+.call .row .q { flex: 1; }
+.call .row .a { font-family: 'Geist Mono'; font-size: 26px; font-weight: 500; }
+.bad .x { background: var(--red); } .bad .a { color: var(--red); }
+.ok .x { background: var(--green2); } .ok .a { color: var(--green2); }
+.json .row { gap: 14px; font-size: 24px; margin-top: 12px; }
+.json .row .p { width: 78px; font-family: 'Geist Mono'; font-size: 22px; color: #56625a; flex: none; }
+.json .row .f { font-family: 'Geist Mono'; font-size: 26px; font-weight: 500; width: 60px; flex: none; }
+.json .row .w { flex: 1; font-family: 'Geist Mono'; font-size: 19px; color: #2c3a30; }
+.json .row .x { width: 30px; height: 30px; font-size: 17px; }
+.json .bad .w { color: var(--red); }
+.json .foot { font-family: 'Geist Mono'; font-size: 17px; color: #6a756d; margin-top: 16px; border-top: 1px solid #e3e7e0; padding-top: 12px; }
+#sub { position: absolute; left: 0; right: 0; bottom: 46px; z-index: 37; text-align: center; }
+#sub span { display: inline-block; max-width: 1500px; background: rgba(14,12,9,.74); color: #fbf7ee; font-size: 34px; line-height: 1.35; padding: 10px 26px; border-radius: 10px; font-weight: 500; }
+</style></head>
+<body><div id="frame">
+
+<div class="sc dark" id="s-cold"><img class="kb grade" src="art/queue.png"><div class="lines type"><div class="l1"></div><div class="l2"></div></div></div>
+<div class="sc dark arch" id="s-arch0"><img class="kb"><div class="stamp"><b></b><span></span></div><div class="place"></div><div class="credit"></div></div>
+<div class="sc dark arch" id="s-arch1"><img class="kb"><div class="stamp"><b></b><span></span></div><div class="place"></div><div class="credit"></div></div>
+<div class="sc dark" id="s-pen"><img class="kb grade" src="art/pen.png"></div>
+<div class="sc dark" id="s-sheet1"><img class="paper" src="art/sheets/6a7f7928dcbc755a763f1999.jpg">
+  <div class="count"><b>0</b><div class="pu"><i></i>polling units</div><div class="each">One sheet of paper each.</div></div></div>
+<div class="sc dark" id="s-wall"><div class="grid"></div>
+  <div class="urlpill"><svg viewBox="0 0 24 24" fill="none" stroke="#1d1a15" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>inecelectionresults.ng</span></div></div>
+<div class="sc dark" id="s-map"><svg id="map"></svg>
+  <div class="side"><div class="clock">Sat 25 Feb 2023 · 14:30</div><div class="n">0</div><div class="of">of 176,846 polling-unit sheets online</div><div class="bar"><i></i></div><div class="miss"></div></div>
+  <div class="src">2023 presidential election · IReV upload times</div></div>
+<div class="sc desk" id="s-clip87"><div class="clipping" style="left:330px;top:190px;width:1260px">
+  <div class="mast">BusinessDay<small>MAY 2023</small></div>
+  <h2>INEC still uploading results <span class="mark">87 days</span> after presidential election</h2>
+  <div class="txt"><i style="width:100%"></i><i style="width:96%"></i><i style="width:99%"></i><i style="width:62%"></i></div>
+  <svg class="pencil" id="p87"><path/></svg></div></div>
+<div class="sc" id="s-chain"><div class="rail"><svg class="string"><path/></svg></div></div>
+<div class="sc dark" id="s-phone"><img class="kb grade" src="art/phone.png"></div>
+<div class="sc desk" id="s-clips2"><div class="clipping" id="bbc" style="left:140px;top:150px;width:1080px">
+  <div class="mast">BBC News<small>MAY 2023</small></div>
+  <h2 style="font-size:66px">Nigeria election: The mystery of the altered results in disputed poll</h2>
+  <div class="txt"><i style="width:100%"></i><i style="width:94%"></i><i style="width:70%"></i></div></div>
+  <div class="card2" id="trib" style="left:1060px;top:520px"><h3>Election petition tribunal</h3><p>Argued sheet by sheet.<br>Decided months later.</p></div></div>
+<div class="sc dark" id="s-why"><div class="wrap">
+  <div class="lab"></div><div class="date"><span>16</span> <span>January</span> <span>2027</span></div>
+  <div class="pair"><div class="weeks">weeks after the fact<i></i></div><div class="night"><i></i>on the night</div></div></div></div>
+<div class="sc lightbg" id="s-title"><div class="wrap"><div class="brand"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#0e3d1e"/><path class="bars" d="M9.5 9v14M13.5 9v14M17.5 9v14M21.5 9v14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path class="slash" d="M6.5 20.5 25.5 11.5" stroke="#7fd37e" stroke-width="2.8" stroke-linecap="round" fill="none"/></svg><div class="word">Recount</div></div>
+  <div class="tag">Every polling unit. Every sheet. <span class="read">Read.<svg viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M2 18 C 30 8, 60 26, 98 12"/></svg></span></div></div></div>
+<div class="sc lightbg paperish" id="s-win0"><div class="win"><div class="bar"><b></b><b></b><b></b><span></span></div><div class="view"><img></div></div></div>
+<div class="sc lightbg paperish" id="s-win1"><div class="win"><div class="bar"><b></b><b></b><b></b><span></span></div><div class="view"><img></div></div></div>
+<div class="sc lightbg paperish" id="s-phone2"><div class="card"><img src="art/phone.png"></div></div>
+<div class="sc lightbg paperish" id="s-end"><div class="wrap"><div class="brand"><svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#0e3d1e"/><path d="M9.5 9v14M13.5 9v14M17.5 9v14M21.5 9v14" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><path d="M6.5 20.5 25.5 11.5" stroke="#7fd37e" stroke-width="2.8" stroke-linecap="round"/></svg><div class="word">Recount</div></div>
+  <div class="tag">Every polling unit. Every sheet. Read.</div>
+  <div class="url">recount.nerom.site</div>
+  <div class="small">Built with Muse Spark 1.3 and SAM 3.1 on the Meta Model API<br>Independent · not affiliated with INEC · a flag means look again, not fraud<br>Archive footage: Voice of America (public domain) · Photos: Iyusuf615, Yemi Festus, Harryman4ever via Wikimedia Commons, CC BY-SA 4.0</div></div></div>
+
+<div class="call json" id="c-spark" style="left:1170px;top:120px;width:640px"><div class="h">MUSE SPARK 1.3 · WHAT IT READ ON THIS SHEET</div>
+  <div class="row ok"><span class="p">A</span><span class="f">112</span><span class="w">"ONE HUNDRED AND TWELVE"</span><span class="x">✓</span></div>
+  <div class="row ok"><span class="p">APC</span><span class="f">100</span><span class="w">"ONE HUNDRED"</span><span class="x">✓</span></div>
+  <div class="row bad"><span class="p">Total</span><span class="f">237</span><span class="w">words overwritten: "Twenty-two" under "THIRTY SEVEN"</span><span class="x">!</span></div>
+  <div class="foot">3 alterations boxed · stamped · signed · strict JSON schema</div></div>
+<div class="call json" id="c-sam" style="left:1170px;top:520px;width:640px"><div class="h">SAM 3.1 · TEXT PROMPT "OFFICIAL STAMP"</div>
+  <div class="row ok"><span class="p">stamp</span><span class="w">box 1027,1618 → 1300,1923</span><span class="f">0.93</span></div>
+  <div class="row ok"><span class="p">fluid</span><span class="w">no correction fluid found</span><span class="f">—</span></div></div>
+<div class="call" id="c-exam" style="left:1200px;top:150px;width:600px"><div class="h">MUSE SPARK 1.3 · TWO IMAGES · REASONING</div><div class="b">Compares your photo with the original like a document examiner</div><div class="s">same physical sheet? every changed entry, boxed</div></div>
+<div class="call" id="c-rows" style="left:1240px;top:150px;width:520px"><div class="h">MUSE SPARK 1.3</div><div class="b">Reads every row of the collation sheet</div><div class="s">then code checks each row against the polling units</div></div>
+<div class="call" id="c-check" style="left:1150px;top:170px;width:620px"><div class="h">PLAIN CODE · THIS SHEET</div>
+  <div class="row bad"><span class="x">✕</span><span class="q">Do the votes add up?</span><span class="a">222 ≠ 237</span></div>
+  <div class="row bad"><span class="x">✕</span><span class="q">More votes than voters?</span><span class="a">252 &gt; 237</span></div>
+  <div class="row ok"><span class="x">✓</span><span class="q">Was it signed?</span><span class="a">signed</span></div></div>
+<div class="call" id="c-osun" style="left:1180px;top:150px;width:600px"><div class="h">OSUN GOVERNORSHIP · AUG 2026</div>
+  <div class="row ok"><span class="x">✓</span><span class="q">Sheets read</span><span class="a">3,752 / 3,752</span></div>
+  <div class="row ok"><span class="x">✓</span><span class="q">A: read vs declared</span><span class="a">510,520 · 511,067</span></div>
+  <div class="row ok"><span class="x">✓</span><span class="q">APC: read vs declared</span><span class="a">444,651 · 444,815</span></div>
+  <div class="row bad"><span class="x">!</span><span class="q">Need a second look</span><span class="a">354 sheets</span></div>
+  <div class="row ok"><span class="x">✓</span><span class="q">Muse Spark, 3 elections</span><span class="a">11,776 sheets</span></div></div>
+<div class="call" id="c-pack" style="left:1240px;top:180px;width:520px"><div class="h">EVIDENCE PACK</div><div class="b">SHA-256 of every sheet</div><div class="s">as published on the night</div></div>
+
+<div id="wipe"></div>
+<div id="veil"></div><div id="leak"></div><div id="vig"></div><div id="grain"></div>
+<div id="coldtype" class="type"><div class="l1"></div><div class="l2"></div></div>
+<div id="tag"><small></small><div></div></div>
+<div id="chyron"><div class="k"><i></i>RECOUNT</div><div class="c"></div></div>
+<div id="sub"></div>
+</div>
+<script src="timeline.js"></script>
+<script>
+const $ = (s, r = document) => r.querySelector(s);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const expo = (x) => { x = clamp(x); return x === 1 ? 1 : 1 - Math.pow(2, -10 * x); };
+const cubic = (x) => { x = clamp(x); return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+const outc = (x) => { x = clamp(x); return 1 - Math.pow(1 - x, 3); };
+const back = (x) => { x = clamp(x); const c = 1.6; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+const lerp = (a, b, k) => a + (b - a) * k;
+const fmt = (n) => Math.round(n).toLocaleString('en-US');
+const VO = Object.fromEntries(TL.vo.map((v) => [v.id, v]));
+// when a phrase is spoken, estimated from its place in the line's text
+const at = (id, phrase) => { const v = VO[id]; const i = v.text.indexOf(phrase); if (i < 0) throw new Error(`${id}: ${phrase}`); return v.t + v.dur * (i / v.text.length) * 0.97; };
+const type = (el, text, k) => { el.textContent = text.slice(0, Math.round(text.length * clamp(k))); };
+
+// ---------- static builds ----------
+const grid = $('#s-wall .grid');
+for (let i = 0; i < 40; i++) { const im = new Image(); im.src = `art/thumbs/${TL.sheets[(i * 7) % TL.sheets.length]}.jpg`; grid.appendChild(im); }
+const mapSvg = $('#map');
+const MS = Math.min(980 / TL.map.w, 900 / TL.map.h);
+mapSvg.setAttribute('width', TL.map.w * MS); mapSvg.setAttribute('height', TL.map.h * MS);
+mapSvg.setAttribute('viewBox', `0 0 ${TL.map.w} ${TL.map.h}`);
+const statePaths = TL.map.states.map((s) => { const p = document.createElementNS('http://www.w3.org/2000/svg', 'path'); p.setAttribute('d', s.d); p.setAttribute('stroke', '#0c0a08'); p.setAttribute('stroke-width', 1.4); mapSvg.appendChild(p); return p; });
+const NSTEP = TL.map.states[0].cum.length;
+const stepTotal = Array.from({ length: NSTEP }, (_, k) => TL.map.states.reduce((a, s) => a + s.cum[k], 0));
+const ALL = TL.map.states.reduce((a, s) => a + s.total, 0);
+
+const SLIPS = [
+  ['EC8A', 'Polling unit', [['Unit 005', '108'], ['Unit 006', '96']]],
+  ['EC8B', 'Ward collation', [['Unit 005', '108'], ['Ward total', '1,412']]],
+  ['EC8C', 'Local government', [['Ward 02', '1,412'], ['LGA total', '14,906']]],
+  ['EC8D', 'State collation', [['LGA 27', '14,906'], ['State total', '510,520']]],
+  ['EC8E', 'Declaration', [['Declared', '511,067'], ['Returned', '✓']]],
+];
+const rail = $('#s-chain .rail');
+const SLIP_X = (i) => 140 + i * 560, SLIP_Y = (i) => 380 + (i % 2 ? 40 : -30);
+SLIPS.forEach(([code, h, rows], i) => {
+  const d = document.createElement('div'); d.className = 'slip';
+  d.style.left = SLIP_X(i) + 'px'; d.style.top = SLIP_Y(i) + 'px'; d.style.transform = `rotate(${[-2, 1.5, -1, 2, -1.5][i]}deg)`;
+  d.innerHTML = `<div class="code">${code}</div><h4>${h}</h4>` + rows.map(([a, b], r) => `<div class="row"><span>${a}</span><span class="v">${b}${i === 1 && r === 0 ? '<span class="strike"></span><span class="fix">180</span>' : ''}</span></div>`).join('');
+  rail.appendChild(d);
+});
+const stringPath = $('#s-chain .string path');
+stringPath.setAttribute('d', SLIPS.map((_, i) => `${i ? 'L' : 'M'}${SLIP_X(i) + 210} ${SLIP_Y(i) + 20}`).join(''));
+const RAIL_W = SLIP_X(4) + 420 + 140;
+
+// noise for the film grain
+const nc = document.createElement('canvas'); nc.width = nc.height = 256; const nx = nc.getContext('2d'); const nd = nx.createImageData(256, 256);
+let seed = 7; const rnd = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+for (let i = 0; i < nd.data.length; i += 4) { const v = rnd() * 255; nd.data[i] = nd.data[i + 1] = nd.data[i + 2] = v; nd.data[i + 3] = 255; }
+nx.putImageData(nd, 0, 0); $('#grain').style.background = `url(${nc.toDataURL()})`;
+
+function drawPencil(svg, target, pad = 22) {
+  const r = target.getBoundingClientRect(), f = svg.parentElement.getBoundingClientRect();
+  const x = r.left - f.left - pad, y = r.top - f.top - pad * 0.6, w = r.width + pad * 2, h = r.height + pad * 1.2;
+  Object.assign(svg.style, { left: x + 'px', top: y + 'px' }); svg.setAttribute('width', w); svg.setAttribute('height', h);
+  const p = svg.querySelector('path');
+  p.setAttribute('d', `M${w * 0.55} ${h * 0.06} C ${w * 1.02} ${h * 0.02}, ${w * 1.04} ${h * 0.95}, ${w * 0.5} ${h * 0.96} C ${w * -0.04} ${h * 0.97}, ${w * -0.02} ${h * 0.08}, ${w * 0.6} ${h * 0.12}`);
+  const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.len = L;
+}
+const ink = (p, k) => { p.style.strokeDashoffset = p.dataset.len * (1 - clamp(k)); };
+
+// ---------- scenes ----------
+const URLS = { sheet: ['', '/osun/pu/6a7f7928dcbc755a763f1999'], osun: ['', '/osun'], check: ['', '/check'], collation: ['', '/collation'], report: ['', '/report'], pack: ['', '/osun/pack/pu/6a7f7928dcbc755a763f1999'], home: ['', '/'] };
+function frameSrc(clip, c) {
+  const fr = TL.clips[clip].frames; let lo = 0, hi = fr.length - 1;
+  while (lo < hi) { const m = (lo + hi + 1) >> 1; if (fr[m] <= c) lo = m; else hi = m - 1; }
+  return `clips/${clip}/${String(lo).padStart(5, '0')}.jpg`;
+}
+const kb = (img, k, z0, z1, fx = 0.5, fy = 0.5, dx = 0, dy = 0) => { img.style.transformOrigin = `${fx * 100}% ${fy * 100}%`; img.style.transform = `translate(${dx * k}px, ${dy * k}px) scale(${lerp(z0, z1, k)})`; };
+
+const DRAW = {
+  cold(el, u, D) {
+    kb($('img', el), u / D, 1.12, 1.2, 0.45, 0.55, -40, 0);
+    type($('.l1', el), 'Saturday, 25 February 2023.', (u - 1.0) / 1.7);
+    type($('.l2', el), 'Nigeria votes for a president.', (u - 3.3) / 1.9);
+  },
+  pen(el, u, D) { kb($('img', el), u / D, 1.16, 1.04, 0.6, 0.6); },
+  sheet1(el, u, D) {
+    const p = $('.paper', el); p.style.transform = `rotate(${lerp(-5, -3, u / D)}deg) translateY(${lerp(40, -260, cubic(u / D))}px)`;
+    $('.count b', el).textContent = fmt(176846 * expo((u - 0.2) / 1.8));
+    $('.pu i', el).style.width = '100%'; $('.pu i', el).style.transform = `scaleX(${outc((u - 1.6) / 0.6)})`;
+    $('.each', el).style.opacity = clamp((u - 2.4) / 0.5);
+  },
+  wall(el, u, D) {
+    const g = $('.grid', el), k = cubic(clamp((u - 0.3) / (D * 0.8)));
+    // start tight on one sheet (column 3, row 2), pull back to the whole wall
+    const z = lerp(2.6, 0.6, k), cx = 3 * 324 + 150, cy = 2 * 424 + 200;
+    const wx = lerp(cx, 1284, k), wy = lerp(cy, 1048, k);
+    g.style.transform = `translate(${960 - wx * z}px, ${560 - wy * z}px) scale(${z})`;
+    const pill = $('.urlpill', el); pill.style.opacity = clamp((u - 1.0) / 0.5); pill.style.transform = `translate(-50%, ${(1 - expo((u - 1.0) / 0.7)) * -30}px)`;
+  },
+  map(el, u, D) {
+    const k = cubic(clamp((u - 0.2) / (D * 0.78))), step = Math.min(NSTEP - 1, Math.floor(k * (NSTEP - 1)));
+    TL.map.states.forEach((s, i) => { const f = s.cum[step] / s.total; statePaths[i].setAttribute('fill', `rgb(${lerp(46, 239, f)},${lerp(39, 230, f)},${lerp(31, 210, f)})`); });
+    const when = new Date(Date.parse(TL.map.start) + step * TL.map.stepMinutes * 60000 + 3600000); // WAT
+    const day = when.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    $('.clock', el).textContent = `${day} · ${String(when.getUTCHours()).padStart(2, '0')}:${String(when.getUTCMinutes()).padStart(2, '0')}`;
+    $('.n', el).textContent = fmt(stepTotal[step]);
+    $('.bar i', el).style.width = (stepTotal[step] / ALL) * 100 + '%';
+    const m = $('.miss', el); m.textContent = `Day 10: ${fmt(ALL - stepTotal[NSTEP - 1])} sheets still missing`; m.style.opacity = clamp((u - D * 0.8) / 0.4);
+  },
+  clip87(el, u, D) {
+    const c = $('.clipping', el); const k = expo(u / 0.9);
+    c.style.transform = `translateY(${(1 - k) * 260}px) rotate(${lerp(-5, -2, k)}deg) scale(${lerp(1.06, 1, k) + u * 0.006})`;
+    ink($('#p87 path'), (u - 1.0) / 0.8);
+  },
+  chain(el, u, D) {
+    const fit = 1920 / RAIL_W;
+    const panEnd = D * 0.6, zoomEnd = D * 0.74;
+    let z, x;
+    if (u < panEnd) { z = 1; x = -lerp(0, RAIL_W - 1920, cubic(u / panEnd)); } else { const k = cubic((u - panEnd) / (zoomEnd - panEnd)); z = lerp(1, fit, k); x = lerp(-(RAIL_W - 1920), 0, k); }
+    let y = lerp(0, (1080 - 1080 * z) / 2 + 40, z < 1 ? (1 - z) / (1 - fit) : 0);
+    const ts = at('n4', 'a number to change') - TL.scenes.find((s) => s.name === 'chain').t;
+    // then lean in on the ward sheet, where the number changes
+    const kz = cubic((u - (ts - 0.9)) / 0.9);
+    if (kz > 0) { const zz = lerp(z, 1.45, kz), cx = SLIP_X(1) + 210, cy = SLIP_Y(1) + 165; x = lerp(x, 960 - cx * zz, kz); y = lerp(y, 560 - cy * zz, kz); z = zz; }
+    rail.style.transform = `translate(${x}px, ${y}px) scale(${z})`;
+    const L = stringPath.getTotalLength(); stringPath.style.strokeDasharray = L; stringPath.style.strokeDashoffset = L * (1 - clamp(u / panEnd * 1.05));
+    $('.strike', el).style.transform = `scaleX(${outc((u - ts) / 0.35)})`;
+    const fx = $('.fix', el); fx.style.opacity = clamp((u - ts - 0.4) / 0.3); fx.style.transform = `translateY(${(1 - outc((u - ts - 0.4) / 0.4)) * 12}px)`;
+  },
+  phone(el, u, D) { kb($('img', el), u / D, 1.05, 1.2, 0.78, 0.45); },
+  clips2(el, u, D, sc) {
+    const k = expo(u / 0.9); $('#bbc').style.transform = `translateY(${(1 - k) * 240}px) rotate(${lerp(4, 2, k)}deg)`;
+    const t2 = at('n5', 'The fights') - sc.t, k2 = expo((u - t2) / 0.8);
+    $('#trib').style.opacity = clamp((u - t2) / 0.2); $('#trib').style.transform = `translateY(${(1 - k2) * 200}px) rotate(${lerp(-6, -3, k2)}deg)`;
+  },
+  why(el, u, D, sc) {
+    const T = (p) => at('n6', p) - sc.t;
+    type($('.lab', el), "Nigeria's next general election", (u - 0.4) / 1.4);
+    [...el.querySelectorAll('.date span')].forEach((s, i) => { const k = expo((u - T('sixteenth') - i * 0.55) / 0.6); s.style.opacity = k; s.style.transform = `translateY(${(1 - k) * 40}px)`; });
+    const w = $('.weeks', el), n = $('.night', el);
+    w.style.opacity = clamp((u - T("I didn't")) / 0.3); $('.weeks i', el).style.transform = `scaleX(${outc((u - T('weeks after') - 0.5) / 0.4)})`;
+    n.style.opacity = clamp((u - T('I wanted')) / 0.3); $('.night i', el).style.width = '100%'; $('.night i', el).style.transform = `scaleX(${outc((u - T('on the night')) / 0.5)})`;
+    const out = clamp((u - T('So I built')) / 0.5); $('.wrap', el).style.opacity = 1 - out;
+    const wk = cubic((u - (D - 0.7)) / 0.7), wipe = $('#wipe');
+    wipe.style.display = wk > 0 ? 'block' : 'none'; wipe.style.transform = `scale(${wk * 240})`;
+  },
+  title(el, u) {
+    const svg = $('.brand svg', el), k = back(u / 0.55);
+    svg.style.transform = `scale(${0.4 + 0.6 * k}) rotate(${(1 - k) * -14}deg)`; svg.style.opacity = clamp(u / 0.15);
+    const bars = $('.bars', el); bars.style.strokeDasharray = '14 100'; bars.style.strokeDashoffset = 14 * (1 - outc((u - 0.15) / 0.45));
+    const sl = $('.slash', el); sl.style.strokeDasharray = 22; sl.style.strokeDashoffset = 22 * (1 - outc((u - 0.55) / 0.35));
+    const w = $('.word', el), kw = expo((u - 0.2) / 0.8); w.style.opacity = kw; w.style.transform = `translateX(${(1 - kw) * -40}px)`;
+    const tg = $('.tag', el); tg.style.opacity = clamp((u - 0.9) / 0.4);
+    const p = $('.tag path', el); if (!p.dataset.len) { p.dataset.len = p.getTotalLength(); p.style.strokeDasharray = p.dataset.len; } ink(p, (u - 1.5) / 0.5);
+    $('.wrap', el).style.transform = `scale(${1 + u * 0.012})`;
+  },
+  phone2(el, u, D) { const c = $('.card', el), k = expo(u / 0.6); c.style.transform = `translateY(${(1 - k) * 60}px)`; kb($('img', el), u / D, 1.1, 1.25, 0.78, 0.45); },
+  end(el, u) {
+    const kids = [$('.brand', el), $('.tag', el), $('.url', el), $('.small', el)];
+    kids.forEach((n, i) => { const k = expo((u - 0.15 - i * 0.25) / 0.8); n.style.opacity = k; n.style.transform = `translateY(${(1 - k) * 30}px)`; });
+  },
+};
+// archive shots; every VOA frame is from the reporter's own footage (no wire-service material)
+const ARCH = {
+  'f-crowd': { credit: 'VOA · Nigeria · 2023' },
+  'f-bvas': { credit: 'VOA · Nigeria · 2023' },
+  'p-count': { fy: 0.42, credit: 'Photo: Iyusuf615 · CC BY-SA 4.0', place: 'Pantami, Gombe\nCounting the presidential vote' },
+  'p-upload': { fy: 0.4, credit: 'Photo: Yemi Festus · CC BY-SA 4.0', place: 'Badagry, Lagos\nThe same tablet that checks voters uploads the sheet' },
+  'p-decl': { fy: 0.3, credit: 'Photo: Harryman4ever · CC BY-SA 4.0', stamp: ['1 March 2023 · before dawn', 'A winner is declared in Abuja'] },
+  'f-sitin': { credit: 'VOA · Abuja · March 2023', place: 'Opposition supporters reject the result' },
+  'f-irev': { credit: 'VOA · Abuja · March 2023', place: 'Both main opposition parties\ngo to court' },
+};
+let archIdx = 0; const archOf = new Map();
+TL.scenes.forEach((s, i) => { if (s.foot || s.photo) archOf.set(i, `#s-arch${archIdx++ % 2}`); });
+function drawArch(el, u, D, s) {
+  const a = ARCH[s.name], img = $('img', el);
+  const src = s.foot ? `footage/f/${s.foot}/${String(Math.min(TL.footage[s.foot].n - 1, Math.floor(u * 30))).padStart(5, '0')}.jpg` : `art/photos/${s.photo}.jpg`;
+  let p = null; if (img.getAttribute('src') !== src) { img.src = src; p = img.decode().catch(() => {}); }
+  kb(img, clamp(u / (D + 0.6)), s.foot ? 1.02 : 1.06, s.foot ? 1.07 : 1.16, 0.5, a.fy ?? 0.5);
+  $('.credit', el).textContent = a.credit;
+  const pl = $('.place', el); type(pl, a.place ?? '', (u - 0.35) / 1.1); pl.style.display = a.place ? '' : 'none';
+  const st = $('.stamp', el); st.style.display = a.stamp ? '' : 'none';
+  if (a.stamp) {
+    $('b', st).textContent = a.stamp[0]; $('span', st).textContent = a.stamp[1];
+    const k = back((u - 0.35) / 0.35); st.style.opacity = clamp((u - 0.35) / 0.08); st.style.transform = `rotate(-4deg) scale(${lerp(1.5, 1, clamp(k, 0, 1.2))})`;
+  }
+  return p;
+}
+const CLIPSET = new Set(Object.keys(URLS));
+let clipIdx = 0; const winOf = new Map();
+TL.scenes.forEach((s, i) => { if (s.clip) { const prev = TL.scenes[i - 1]; const cont = prev && prev.clip === s.clip && Math.abs(prev.to - s.from) < 0.05; if (!cont) clipIdx++; winOf.set(i, `#s-win${clipIdx % 2}`); s.cont = cont; } });
+const elOf = (i) => (TL.scenes[i].clip ? $(winOf.get(i)) : archOf.has(i) ? $(archOf.get(i)) : $(`#s-${TL.scenes[i].name}`));
+function drawClip(el, u, D, s) {
+  const C = s.to - s.from, rate = C > D - 0.2 ? C / Math.max(0.5, D - 0.2) : 1;
+  const c = s.from + Math.min(C, u * rate);
+  const img = $('.view img', el), src = frameSrc(s.clip, c);
+  let p = null; if (img.getAttribute('src') !== src) { img.src = src; p = img.decode().catch(() => {}); }
+  // camera: a slow push toward the shot's focus, continuous across a take split over two lines
+  let run0 = s, i = TL.scenes.indexOf(s); while (TL.scenes[i].cont) { i--; run0 = TL.scenes[i]; }
+  let j = TL.scenes.indexOf(s); while (TL.scenes[j + 1]?.cont) j++;
+  const runEnd = TL.scenes[j].t + TL.scenes[j].dur, ru = (s.t + u - run0.t) / (runEnd - run0.t);
+  const [fx, fy] = s.focus ?? [0.5, 0.5];
+  img.style.transformOrigin = `${fx * 100}% ${fy * 100}%`; img.style.transform = `scale(${1 + 0.1 * cubic(ru)})`;
+  const [d, path] = URLS[s.clip]; $('.bar span', el).innerHTML = `recount.nerom.site<em>${path}</em>`;
+  const w = $('.win', el), k = expo((s.t + u - run0.t) / 0.7);
+  w.style.transform = `translateY(${(1 - k) * 50}px) scale(${0.97 + 0.03 * k})`;
+  return p;
+}
+
+// ---------- per-frame ----------
+const XF = (i) => { const s = TL.scenes[i], pr = TL.scenes[i - 1]; if (s.cont || s.name === 'title') return 0; if (s.foot && pr?.foot) return 0.2; return s.name === 'end' ? 0.6 : TL.scenes[i].t < TL.title ? 0.6 : 0.4; };
+function show(i, t, op, z) {
+  const s = TL.scenes[i], el = elOf(i); el.style.display = 'block'; el.style.opacity = op; el.style.zIndex = z;
+  const u = t - s.t;
+  return s.clip ? drawClip(el, u, s.dur, s) : archOf.has(i) ? drawArch(el, u, s.dur, s) : (DRAW[s.name](el, u, s.dur, s), null);
+}
+function overlays(t) {
+  const dark = t < TL.title;
+  $('#vig').style.opacity = dark ? 1 : 0;
+  $('#grain').style.opacity = dark ? 0.2 : 0.07;
+  const f = Math.floor(t * 30); $('#grain').style.transform = `translate(${((f * 37) % 64) - 32}px, ${((f * 53) % 64) - 32}px)`;
+  $('#veil').style.opacity = t < 1.4 ? 1 - cubic(t / 1.4) : 0;
+  // light leaks over the archive cuts
+  let leak = 0, lx = 0;
+  TL.scenes.forEach((s, i) => { if (i && s.t < TL.title - 1 && !s.foot) { const k = (t - s.t + 0.35) / 1.1; if (k > 0 && k < 1) { leak = Math.max(leak, Math.sin(k * Math.PI) * 0.55); lx = (i % 2 ? 1 : -1) * (k * 500 - 250); } } });
+  $('#leak').style.opacity = leak; $('#leak').style.transform = `translateX(${lx}px)`;
+  // cold open: the two typed lines over the footage (keys in mix.mjs use the same times)
+  const ct = $('#coldtype'); ct.style.display = t < TL.cold + 0.3 ? 'block' : 'none'; ct.style.opacity = 1 - clamp((t - TL.cold + 0.5) / 0.6);
+  type($('.l1', ct), 'Saturday, 25 February 2023.', (t - 1.0) / 1.7); type($('.l2', ct), 'Nigeria votes for a president.', (t - 3.3) / 1.9);
+  // act 1: file tag (typed); act 3: chyron
+  const v = TL.vo.find((x) => t >= x.t - 0.1 && t < x.t + x.dur + 0.5);
+  const ROMAN = { problem: 'I — THE COUNT', why: 'II — WHY', how: 'III — HOW IT WORKS', end: '' };
+  if (v && v.act === 'problem') {
+    $('#tag').style.display = ''; $('#tag small').textContent = ROMAN.problem; type($('#tag div'), v.cap, (t - v.t - 0.3) / 1.2);
+    $('#tag').style.opacity = 1 - clamp((t - (v.t + v.dur + 0.2)) / 0.3);
+  } else $('#tag').style.display = 'none';
+  const ch = $('#chyron');
+  const inEnd = t >= TL.scenes.at(-1).t;
+  if (v && v.act === 'how' && !inEnd) {
+    ch.style.display = 'flex'; $('.c', ch).textContent = v.cap; const k = expo((t - v.t - 0.2) / 0.6);
+    ch.style.opacity = k * (1 - clamp((t - (v.t + v.dur + 0.15)) / 0.3)); ch.style.transform = `translateX(${(1 - k) * -30}px)`;
+  } else ch.style.display = 'none';
+  // callouts
+  const pop = (sel, t0, t1) => { const e = $(sel), k = expo((t - t0) / 0.5), o = 1 - clamp((t - t1) / 0.35); e.style.opacity = t < t0 ? 0 : k * o; e.style.transform = `translateY(${(1 - k) * 24}px) scale(${0.96 + 0.04 * k})`; };
+  const endOf = (id) => VO[id].t + VO[id].dur + 0.3;
+  const rows = (sel, times) => [...document.querySelectorAll(`${sel} .row`)].forEach((r, i) => { const k = expo((t - times[i]) / 0.4); r.style.opacity = t < times[i] ? 0 : k; r.style.transform = `translateX(${(1 - k) * 20}px)`; });
+  pop('#c-spark', at('n7', "Meta's model"), endOf('n7')); pop('#c-sam', at('n7', 'SAM 3.1'), endOf('n7'));
+  rows('#c-spark', [at('n7', "Meta's model") + 0.3, at('n7', 'copies each') , at('n7', 'in numbers'), at('n7', 'in words')]);
+  rows('#c-sam', [at('n7', 'SAM 3.1') + 0.3, at('n7', 'correction fluid')]);
+  pop('#c-exam', at('n10', 'Recount finds'), endOf('n10'));
+  pop('#c-rows', at('n11', 'Recount checks'), endOf('n11'));
+  pop('#c-check', at('n8', 'Do the votes'), endOf('n8'));
+  rows('#c-check', [at('n8', 'Do the votes'), at('n8', 'Are there more'), at('n8', 'Was it signed')]);
+  pop('#c-osun', at('n9', 'Recount read all') - 0.3, endOf('n9'));
+  rows('#c-osun', [at('n9', 'Recount read all'), at('n9', 'Its total lands'), at('n9', 'Its total lands') + 0.7, at('n9', 'and it flagged'), at('n9', 'and it flagged') + 1.4]);
+  const pk = TL.scenes.find((s) => s.name === 'pack'); pop('#c-pack', at('n12', 'every sheet is fingerprinted'), pk.t + pk.dur);
+  // subtitles, a sentence (or half of a long one) at a time
+  const sv = TL.vo.find((x) => t >= x.t - 0.05 && t < x.t + x.dur + 0.2);
+  if (sv) {
+    const parts = sv.text.replace(/(\d)\.(\d)/g, '$1§$2').match(/[^.?!]+[.?!]*/g).map((x) => x.trim().replace(/§/g, '.')).filter(Boolean).flatMap((p) => {
+      if (p.length < 70) return [p]; const cs = p.split(/(?<=,) /); let best = 1, bd = 1e9; let acc = 0;
+      for (let i = 0; i < cs.length - 1; i++) { acc += cs[i].length; const d = Math.abs(acc - p.length / 2); if (d < bd) { bd = d; best = i + 1; } }
+      return cs.length > 1 ? [cs.slice(0, best).join(' '), cs.slice(best).join(' ')] : [p];
+    });
+    const lens = parts.map((p) => p.length + 6), tot = lens.reduce((a, b) => a + b, 0);
+    let acc = 0, k = (t - sv.t) / sv.dur, idx = parts.length - 1;
+    for (let j = 0; j < parts.length; j++) { acc += lens[j] / tot; if (k <= acc) { idx = j; break; } }
+    $('#sub').innerHTML = `<span>${parts[idx]}</span>`;
+  } else $('#sub').innerHTML = '';
+}
+window.seek = async (t) => {
+  for (const e of document.querySelectorAll('.sc')) e.style.display = 'none';
+  $('#wipe').style.display = 'none';
+  const S = TL.scenes; let i = 0; while (i < S.length - 1 && t >= S[i + 1].t) i++;
+  const waits = [show(i, t, 1, 1)];
+  const xf = XF(i), u = t - S[i].t;
+  if (i > 0 && u < xf) waits.push(show(i - 1, t, 1 - cubic(u / xf), 2));
+  overlays(t);
+  await Promise.all(waits.filter(Boolean));
+};
+window.ready = (async () => {
+  await Promise.all(['600 100px Fraunces', '700 100px Fraunces', '500 italic 50px Fraunces', '400 30px "Geist Mono"', '500 30px Poppins', '400 30px "Special Elite"'].map((f) => document.fonts.load(f)));
+  await Promise.all([...document.images].map((i) => i.decode().catch(() => {})));
+  const c = $('#s-clip87'); c.style.display = 'block'; drawPencil($('#p87'), $('#s-clip87 .mark')); c.style.display = 'none';
+  await window.seek(0);
+})();
+</script>
+</body></html>
