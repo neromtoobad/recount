@@ -93,6 +93,7 @@ Every flag is worded as "look at this sheet", never as an accusation.
 | Read user uploads and run the fact-check | `muse-spark-1.3` (standard), reasoning medium | Photos from citizens stay out of contributor mode. Medium reasoning for the two-image forensic comparison. |
 | Read collation sheets | `muse-spark-1.3`, reasoning low | A wide table of 9–30 rows × 15 parties, returned against a strict JSON schema |
 | Locate the stamp and the correction fluid | `sam-3.1` | Concept prompts `"round stamp"` and `"correction fluid"`. Boxes are parsed straight from the streamed output, so no masks need decoding. |
+| Second look at every numeric flag | `muse-spark-1.3` (standard), reasoning medium | A flag is only as good as the digits behind it. For each sheet whose arithmetic or codes fail, Muse Spark goes back to the image with the first reading and the failed sums, re-reads only the entries that flag depends on, and returns `on_sheet` (the paper really says this), `misread` (the first reading was wrong) or `unclear`, with what the sheet says, a plain-English explanation and a box. It's shown under the flag on every sheet page. |
 
 Every Muse Spark call uses a strict JSON schema, so code, not prose, decides each flag. When the model can't read a figure, the answer is null, never a guess. SAM calls back off on 429 responses because its rate limit is tighter than Spark's.
 

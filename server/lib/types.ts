@@ -77,11 +77,20 @@ export type PU = {
   oldSheets: { url: string; uploadedAt: string }[];
 };
 
+// Muse Spark's second look at a flagged sheet: does the problem sit on the paper, or in the first reading?
+export type Review = {
+  model: string;
+  at: string;
+  items: { code: string; verdict: 'on_sheet' | 'misread' | 'unclear'; sheetSays: string; explanation: string; box: { x1: number; y1: number; x2: number; y2: number } }[];
+  summary: string;
+};
+
 export type Analysis = {
   pu: PU;
   read: SheetRead | null;
   evidence: Evidence | null;
   flags: Flag[];
+  review?: Review;
   error?: string;
   model: string;
   analyzedAt: string;

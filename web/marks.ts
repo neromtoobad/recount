@@ -5,7 +5,7 @@ export type MarkNote = { n: number; kind: Mark['kind']; label: string; by: strin
 
 // Marks for one sheet in a shared 0-1000 space: SAM 3.1 boxes come in pixels of the
 // image it saw, Muse Spark's edit boxes are already normalised.
-export function sheetMarks(a: Pick<Analysis, 'read' | 'evidence'>): { marks: Mark[]; notes: MarkNote[] } {
+export function sheetMarks(a: Pick<Analysis, 'read' | 'evidence' | 'review'>): { marks: Mark[]; notes: MarkNote[] } {
   const marks: Mark[] = [];
   const notes: MarkNote[] = [];
   const ev = a.evidence;
@@ -21,6 +21,12 @@ export function sheetMarks(a: Pick<Analysis, 'read' | 'evidence'>): { marks: Mar
     const n = notes.length + 1;
     marks.push({ ...x.box, kind: 'correction', n });
     notes.push({ n, kind: 'correction', label: `${x.entry}: ${x.what}`, by: 'Marked by Muse Spark' });
+  }
+  // where the second look re-read the entries behind a flag
+  for (const x of a.review?.items ?? []) {
+    const n = notes.length + 1;
+    marks.push({ ...x.box, kind: 'diff', n });
+    notes.push({ n, kind: 'diff', label: `Checked again: ${x.sheetSays}`, by: 'Muse Spark, second look' });
   }
   return { marks, notes };
 }

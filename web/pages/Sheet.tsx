@@ -113,7 +113,8 @@ export function Sheet({ slug, id }: { slug: string; id: string }) {
           {!a.pending && (
             <section className="card">
               <h2>{a.flags.length ? 'Why this sheet was flagged' : 'Checks'}</h2>
-              <FlagList flags={a.flags} />
+              <FlagList flags={a.flags} review={a.review} />
+              {a.review && <p className="small muted look-summary">Second look by Muse Spark: {a.review.summary}</p>}
             </section>
           )}
 

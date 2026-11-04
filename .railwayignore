@@ -18,3 +18,7 @@ data/nigeria/reports.jsonl
 data/*/collation
 data/factcheck
 data/*.log
+video
+submission
+data/img-cache
+data/review-*.log

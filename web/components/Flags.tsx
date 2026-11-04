@@ -1,4 +1,7 @@
 import { FLAG_INFO, type Flag } from '../api.ts';
+import type { Review } from '../../server/lib/types.ts';
+
+const VERDICT = { on_sheet: ['On the paper', 'The sheet itself says this'], misread: ['First reading was wrong', 'The sheet is fine on this point'], unclear: ['Can\'t tell', 'The handwriting or photo can\'t settle it'] } as const;
 
 const SEV_LABEL = { high: 'Serious', medium: 'Needs a look', low: 'Note' } as const;
 
@@ -11,7 +14,7 @@ export function SeverityTag({ severity }: { severity: Flag['severity'] }) {
 }
 
 // "Why this sheet was flagged": the rule, what we read, and what it does not prove.
-export function FlagList({ flags }: { flags: Flag[] }) {
+export function FlagList({ flags, review }: { flags: Flag[]; review?: Review }) {
   if (!flags.length) {
     return (
       <div className="why why-clean">
@@ -32,6 +35,17 @@ export function FlagList({ flags }: { flags: Flag[] }) {
               <SeverityTag severity={f.severity} />
             </div>
             <p className="why-detail">{f.detail}</p>
+            {(() => {
+              const r = review?.items.find((x) => x.code === f.code);
+              if (!r) return null;
+              return (
+                <div className={`second-look look-${r.verdict}`}>
+                  <div className="look-head"><b>Second look: {VERDICT[r.verdict][0]}</b><span className="mono small">Muse Spark · re-read with reasoning</span></div>
+                  <p className="look-says mono">{r.sheetSays}</p>
+                  <p className="look-why">{r.explanation}</p>
+                </div>
+              );
+            })()}
             {info && (
               <details className="why-more">
                 <summary>What this means</summary>

@@ -9,6 +9,7 @@ Nigeria posts a photo of every polling-unit result sheet (Form EC8A) to INEC's R
 - **Muse Spark 1.3** copies each sheet into strict JSON: the header codes, voters, ballot accounting, every party's score in figures *and* in words, the stamp and signature, and every overwritten entry, with a box around each alteration.
 - **SAM 3.1** finds the official stamp and any correction fluid from a text prompt.
 - **Plain code** checks the sheet against itself (do the votes add up, more votes than voters, figures against words, a missing stamp), then adds every unit up and compares the total with INEC's declaration.
+- **Second look:** for every arithmetic or code flag, Muse Spark goes back to the image with reasoning on, re-reads only the entries that flag depends on, and says whether the problem is on the paper or was a misreading, with an explanation and a box.
 - **Fact-check:** drop in a sheet someone forwarded you. Recount finds the polling unit, pulls the original from IReV, and Muse Spark compares the two like a document examiner.
 - **Collation:** photograph a ward collation sheet (EC8B). Every row is checked against the polling-unit sheets beneath it.
 - **Evidence packs:** a SHA-256 fingerprint of every sheet as it was published, so it can be proven later.
