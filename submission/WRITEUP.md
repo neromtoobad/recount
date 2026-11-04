@@ -114,6 +114,12 @@ Recount's sum of the sheets compared with INEC's declaration:
 - 1,241 sheets flagged, 354 of them serious.
 - 203 show more votes than accredited voters.
 - 226 have party votes that don't add up to the total.
+
+**Second look (Osun):** Muse Spark re-checked every numeric flag on all 853 sheets that had one (1,410 flags):
+- 1,219 (86%) were confirmed: the problem is on the paper itself.
+- 173 (12%) were the first reading's mistakes, usually a word in the figures column, a stray cancellation stroke read as a digit, or a mis-copied number word.
+- 18 (1%) couldn't be settled from the photo.
+- Of the 439 serious flags, 375 were confirmed and 59 were misreadings. On 48 sheets every serious numeric flag turned out to be a misreading, and the sheet page now says so beside the flag.
 - 699 have visible alterations.
 - 197 have no stamp.
 - 3 pairs of units share the same sheet serial number.
