@@ -185,6 +185,7 @@ export function App() {
           <div className="footer-meta mono">
             <span>Read by Meta Muse Spark 1.3 · stamps located by SAM 3.1</span>
             <span>Sheets: INEC IReV · Boundaries: geoBoundaries (CC BY 4.0)</span>
+            <span>Built by nerom and joyegwatu</span>
           </div>
         </div>
       </footer>
